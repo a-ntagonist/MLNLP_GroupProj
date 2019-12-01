@@ -3,6 +3,7 @@ import io
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
+from openpyxl import load_workbook
 
 def readkeys(fn):
     f = open('data\\'+fn+'.txt').read().split()
@@ -10,15 +11,17 @@ def readkeys(fn):
 
 def getstats():
     stats = dict()
-    with open('data\\women_job_statistics.csv', encoding='utf-8') as f:
-        r = csv.reader(f)
-        for row in r:
-            stats[row[0]] = row[1]
+    wb = load_workbook('data\\women_job_statistics.xlsx')
+    ws = wb.active
+    for row in ws.rows:
+        stats[row[0].value] = row[1].value
     ans = dict()
-    with open('data\\job_words.csv', encoding='utf-8') as f:
-        r = csv.reader(f)
-        for row in r:
-            ans[(row[0], tuple(row[1:]))] = stats[row[0]]
+    wb = load_workbook('data\\job_words.xlsx')
+    ws = wb.active
+    for row in ws.rows:
+        if len(row)>1:
+            words = tuple(map(lambda x:x.value, row[1:]))
+            ans[(row[0].value, words)] = stats[row[0].value]
     return ans
 
 
