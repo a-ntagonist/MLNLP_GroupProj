@@ -4,6 +4,8 @@ import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 from openpyxl import load_workbook
+import matplotlib.pyplot as plt
+
 
 def readkeys(fn):
     f = open('data\\'+fn+'.txt').read().split()
@@ -20,7 +22,7 @@ def getstats():
     ws = wb.active
     for row in ws.rows:
         if len(row)>1:
-            words = tuple(map(lambda x:x.value, row[1:]))
+            words = tuple(filter(lambda x:x!=None, map(lambda x:x.value, row[1:])))
             ans[(row[0].value, words)] = stats[row[0].value]
     return ans
 
@@ -46,7 +48,7 @@ def avgvec(words, vectors):
     K = list(filter(lambda x:x!=None, list(map(vectors.word, words))))
     if len(K) == 0:
         print('None of {} are in word vector!'.format(words))
-        return [0 for i in range(300)]
+        return np.array([None for i in range(300)])
     K = np.mean(K, axis=0)
     #print(len(K), K[0], type(K))
     return K
@@ -70,8 +72,9 @@ if __name__ == '__main__':
     results = []
     for jobs, stat in alljobs.items():
         jobvec = avgvec(jobs[1], vectors)
-        bias = getcossim(groupvec_B, jobvec)-getcossim(groupvec_A, jobvec)
-        results.append([jobs[0], bias, stat])
+        if jobvec.any() != None:
+            bias = getcossim(groupvec_B, jobvec)-getcossim(groupvec_A, jobvec)
+            results.append([jobs[0], bias, stat])
 
     results = pd.DataFrame(results, columns=['job', 'bias', 'stat'])
     results.to_csv('results.csv', encoding='utf-8')
@@ -80,6 +83,15 @@ if __name__ == '__main__':
     Y = results.stat.astype(float)
 
     model = sm.OLS(Y, X).fit()
-    predictions = model.predict(X)
+    x = np.linspace(-0.5, 0.5)
+    print('p value: ', model.f_pvalue)
+    print('r squared: ', model.rsquared)
+    print(model.params)
+    plt.scatter(results.bias, results.stat)
+    plt.plot(x, model.params[0]+model.params[1]*x, 'r-')
 
-    print(model.summary())
+    plt.title('Gender Embedding Bias Score for Occupations vs Human Labeled Bias Score')
+    plt.xlabel('Embedding Bias Score')
+    plt.ylabel('Human Labeled Bias Score')
+
+    plt.show()
