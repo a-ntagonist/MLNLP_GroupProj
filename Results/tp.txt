@@ -1,0 +1,46 @@
+Name: job, dtype: object
+bias 0      멍
+1    활동적
+2     적응
+3    모험적
+4     애정
+5    공격적
+6     경계
+7     냉담
+8     야심
+9     불안
+Name: job, dtype: object 271     따뜻
+272     경계
+273     나약
+274     투덜
+275     건전
+276     지혜
+277    내성적
+278     재치
+279     걱정
+280     엉뚱
+
+Name: job, dtype: object
+bias 0      DJ
+1      가수
+2    가정교사
+3     가정부
+4     간호사
+5     간호인
+6     감독관
+7      강사
+8      거물
+9     건물주
+Name: job, dtype: object 248      행정인
+249    홍보담당자
+250       화가
+251      화학자
+252    환경운동가
+253       회계
+254      회계사
+255      회사원
+256       후배
+257      희극인
+Name: job, dtype: object
+
+Name: job, dtype: object

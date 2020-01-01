@@ -6,6 +6,7 @@ import statsmodels.api as sm
 from openpyxl import load_workbook
 import matplotlib.pyplot as plt
 
+from statsmodels.sandbox.regression.predstd import wls_prediction_std
 
 def readkeys(fn):
     f = open('data\\'+fn+'.txt').read().split()
@@ -13,12 +14,12 @@ def readkeys(fn):
 
 def getstats():
     stats = dict()
-    wb = load_workbook('data\\women_job_statistics.xlsx')
+    wb = load_workbook('data\\adj.xlsx')
     ws = wb.active
     for row in ws.rows:
         stats[row[0].value] = row[1].value
     ans = dict()
-    wb = load_workbook('data\\job_words.xlsx')
+    wb = load_workbook('data\\adj_words.xlsx')
     ws = wb.active
     for row in ws.rows:
         if len(row)>1:
@@ -68,14 +69,17 @@ if __name__ == '__main__':
     vectors = wordvec('cc.ko.300.vec', need) # wordvec object
     groupvec_A = avgvec(group_A, vectors)
     groupvec_B = avgvec(group_B, vectors)
-
+    c = 0
     results = []
     for jobs, stat in alljobs.items():
         jobvec = avgvec(jobs[1], vectors)
         if jobvec.any() != None:
             bias = getcossim(groupvec_B, jobvec)-getcossim(groupvec_A, jobvec)
             results.append([jobs[0], bias, stat])
-
+        else:
+            c+=1
+    print(len(alljobs))
+    print(c, c/len(alljobs))
     results = pd.DataFrame(results, columns=['job', 'bias', 'stat'])
     results.to_csv('results.csv', encoding='utf-8')
 
@@ -89,9 +93,18 @@ if __name__ == '__main__':
     print(model.params)
     plt.scatter(results.bias, results.stat)
     plt.plot(x, model.params[0]+model.params[1]*x, 'r-')
+    conf = model.conf_int(0.05)
+    print(conf[0][0])
+    plt.fill_between(x, conf[0][0]+conf[0][1]*x, conf[1][0]+conf[0][1]*x, color=(0.75, 0.75, 0.75, 1))
+    plt.fill_between(x, conf[0][0]+conf[1][1]*x, conf[1][0]+conf[1][1]*x, color=(0.75, 0.75, 0.75, 1))
+    plt.fill_between(x, conf[0][0]+conf[0][1]*x, conf[1][0]+conf[1][1]*x, color=(0.75, 0.75, 0.75, 1))
 
-    plt.title('Gender Embedding Bias Score for Occupations vs Human Labeled Bias Score')
-    plt.xlabel('Embedding Bias Score')
-    plt.ylabel('Human Labeled Bias Score')
-
+    plt.scatter(results.bias, results.stat, color=(0, 0.5, 0.5, 1))
+    plt.plot(x, model.params[0]+model.params[1]*x, 'r-')
+    plt.grid()
+    plt.xlabel('Embedding Bias Score', fontsize=40)
+    plt.ylabel('Human Labeled Bias Score', fontsize=40)
+    plt.xticks(fontsize=25)
+    plt.yticks(fontsize=25)
+    plt.xlim(-0.5, 0.5)
     plt.show()
