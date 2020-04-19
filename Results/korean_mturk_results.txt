@@ -1,0 +1,7 @@
+Total number of key concepts: 287
+33 OOV concepts, 0.115% of total concepts
+p value: 8.224398919638916e-08
+r squared: 0.10802898059242794
+const    1.975138
+bias     3.190475
+dtype: float64

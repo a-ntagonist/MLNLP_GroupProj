@@ -1,0 +1,44 @@
+Words closest to female
+うるさい
+意気揚々
+インテリジェント
+気まぐれ
+おしゃべり
+ふさわしい
+本当に
+気晴らし
+柔らかい
+シンプル
+Words closest to male
+おしゃべり
+インテリジェント
+うるさい
+ふさわしい
+セクシー
+意気揚々
+気まぐれ
+柔らかい
+本当に
+シンプル
+Words with biggest bias (closest to female)
+シンプル
+そわそわ
+インテリジェント
+ふしだら
+柔らかい
+ゆったり
+女性
+クイック
+おしゃべり
+セクシー
+Words with smallest bias (closest to male)
+勇敢
+頑固
+勤勉
+責任
+不運
+反抗
+不屈
+愛情
+寛大
+威厳

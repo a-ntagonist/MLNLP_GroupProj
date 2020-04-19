@@ -1,4 +1,5 @@
-# MLNLP_GroupProj
+# Group Project for 2019 Fall Semester CS492:
+# Machine Learning and Natural Language Processing
 필요 라이브러리: numpy, pandas, statsmodels, openpyxl
 
 - https://fasttext.cc/docs/en/crawl-vectors.html 에서 korean text (bin 말고)를 다운받고 압축을 풀어서 data 폴더에 넣어주세요.

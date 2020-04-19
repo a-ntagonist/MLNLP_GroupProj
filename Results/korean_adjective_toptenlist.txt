@@ -1,0 +1,44 @@
+Words closest to female
+시끄러
+나약
+수줍
+얕
+신경질적
+의기양양
+불굴
+자기연민
+사로잡
+비우호적
+Words closest to male
+수줍
+시끄러
+음침
+부지런
+나약
+얕
+의기양양
+조급
+사교성
+사로잡
+Words with biggest bias (closest to female)
+쾌락
+성급
+유치
+거센
+솔직
+활기
+여린
+여성
+수다
+섹시
+Words with smallest bias (closest to male)
+적대적
+불성실
+이해
+불굴
+보수적
+기회주의적
+호전적
+열광적
+적응
+모험적

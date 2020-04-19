@@ -1,0 +1,44 @@
+Words closest to female
+아버지
+산지기
+식당주인
+싱어송라이터
+교구민
+마약중독자
+신경학자
+바이올리니스트
+법무차관
+일러스트레이터
+Words closest to male
+식당주인
+산지기
+패션디자이너
+바이올리니스트
+아버지
+싱어송라이터
+마약중독자
+스타일리스트
+교구민
+자선가
+Words with biggest bias (closest to female)
+여배우
+가정부
+경리
+주부
+간호사
+비서
+창녀
+유모
+하녀
+수녀
+Words with smallest bias (closest to male)
+아버지
+지휘관
+법학자
+지질학자
+부교수
+고문관
+은행가
+발명가
+군인
+피고용인
