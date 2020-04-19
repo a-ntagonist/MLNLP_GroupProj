@@ -1,8 +1,14 @@
-# Group Project for 2019 Fall Semester CS492:
-# Machine Learning and Natural Language Processing
-필요 라이브러리: numpy, pandas, statsmodels, openpyxl
+# Group Project for 2019 Fall Semester CS492: Machine Learning and Natural Language Processing
 
-- https://fasttext.cc/docs/en/crawl-vectors.html 에서 korean text (bin 말고)를 다운받고 압축을 풀어서 data 폴더에 넣어주세요.
-- data 폴더의 women_job_statistics 에는 첫째 행에 직업군 이름(전문직, 서비스직 등)을 써주시고, 두번째 행에 참여율 수치를 넣어주세요.
-- job_words는 첫번째 행에 직업군 이름 (위 women_job_statistics 파일에 썼던 직업군 이름과 동일해야 함)을 적어주시고, 나머지 행에 word vector로 사용할 단어들을 쭉 적어주시면 됩니다.
-- regress.py를 실행시키면 regression의 결과가 나오는데, https://datatofish.com/statsmodels-linear-regression/ 여길 참고해서 해석해주세요. p>|t|와 R-squared를 보면 될 것 같습니다.
+###Recreating [<Word embeddings quantify 100 years of gender and ethnic stereotypes>] (https://www.pnas.org/content/115/16/E3635) in Korean and Japanese
+
+Group project repository for KAIST 2019 Fall Semester's Machine Learning and Natural Language Processing course. This code recreates the results in the PNAS paper <Word embeddings quantify 100 years of gender and ethnic stereotypes> with Korean and Japanese word embeddings.
+
+* /code/: contains code for analysis.
+  * regress.py: performs linear regression between real-life statistics and embedding bias, saves results to csv/txt files and draws plot
+  * visu.py: uses PCA and t-SNE to plot key concepts and group vectors on 2-D space
+  * gettop.py: gives top ten list of key concepts based on distances to group vectors and embedding bias
+* /results/: contains resulting plots, csv tables and txt files
+* /data/: excel files of statistics and lemmas
+
+Word vector files should be saved in the /data/ directory to run the code.
