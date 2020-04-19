@@ -1,6 +1,6 @@
 # Group Project for 2019 Fall Semester CS492: Machine Learning and Natural Language Processing
 
-###Recreating [<Word embeddings quantify 100 years of gender and ethnic stereotypes>] (https://www.pnas.org/content/115/16/E3635) in Korean and Japanese
+### Recreating [<Word embeddings quantify 100 years of gender and ethnic stereotypes>] (https://www.pnas.org/content/115/16/E3635) in Korean and Japanese
 
 Group project repository for KAIST 2019 Fall Semester's Machine Learning and Natural Language Processing course. This code recreates the results in the PNAS paper <Word embeddings quantify 100 years of gender and ethnic stereotypes> with Korean and Japanese word embeddings.
 
